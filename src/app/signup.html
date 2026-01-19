@@ -1,0 +1,48 @@
+<h2 class="form-title">Créer un compte</h2>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Nom d'utilisateur</label>
+    <input id="username" type="text" formControlName="username" />
+    <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="error">
+      Le nom d'utilisateur est requis.
+    </div>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error">
+      Un email valide est requis.
+    </div>
+  </div>
+  <div>
+    <label for="phone">Numéro de téléphone</label>
+    <input id="phone" type="text" formControlName="phone" />
+    <div *ngIf="signupForm.get('phone')?.errors?.['required'] && signupForm.get('phone')?.touched" class="error">
+      Numéro de téléphone requis.
+    </div>
+    <div *ngIf="signupForm.get('phone')?.errors?.['pattern'] && signupForm.get('phone')?.touched" class="error">
+      Le numéro doit contenir exactement 8 chiffres.
+    </div>
+  </div>
+  <div>
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" formControlName="password" />
+    <div *ngIf="signupForm.get('password')?.errors?.['required'] && signupForm.get('password')?.touched" class="error">
+      Le mot de passe est requis.
+    </div>
+    <div *ngIf="signupForm.get('password')?.errors?.['minlength'] && signupForm.get('password')?.touched" class="error">
+      Au moins 6 caractères.
+    </div>
+    <div *ngIf="signupForm.get('password')?.errors?.['pattern'] && signupForm.get('password')?.touched" class="error">
+      Doit contenir au moins un chiffre.
+    </div>
+  </div>
+  <div>
+    <label for="confirmPassword">Confirmer le mot de passe</label>
+    <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+    <div *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched" class="error">
+      Les mots de passe ne correspondent pas.
+    </div>
+  </div>
+  <button type="submit" [disabled]="signupForm.invalid">S'inscrire</button>
+</form>

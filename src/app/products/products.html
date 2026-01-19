@@ -1,0 +1,75 @@
+<h2 class="form-title">Gestion des produits</h2>
+<form [formGroup]="productForm" (ngSubmit)="editMode ? updateProduct() : addProduct()">
+  <div>
+    <label for="name">Nom</label>
+    <input id="name" type="text"  formControlName="name" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error">
+      Le nom est requis (min 2 caractères).
+    </div>
+  </div>
+    <div>
+    <label for="description">Description</label>
+    <input id="description" type="text"  formControlName="description" />
+    <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="error">
+      La description est requise (min 2 caractères).
+    </div>
+  </div>
+
+  <div>
+    <label for="prix">Prix</label>
+    <input id="prix" type="number" formControlName="prix" />
+    <div *ngIf="productForm.get('prix')?.invalid && productForm.get('prix')?.touched" class="error">
+      Le prix est requis et doit être un nombre positif.
+    </div>
+  </div>
+
+    <div>
+    <label for="qte">Quantité</label>
+    <input id="qte" type="number" formControlName="qte" />
+    <div *ngIf="productForm.get('qte')?.invalid && productForm.get('qte')?.touched" class="error">
+      La quantité est requise et doit être un nombre positif.
+    </div>
+  </div>
+
+  <div>
+  <label for="image">Image</label>
+  <input id="image" type="file" (change)="onFileSelected($event)" accept="image/*">
+</div>
+<!-- Preview -->
+<div *ngIf="preview">
+  <p>Aperçu :</p>
+  <img [src]="preview" style="width: 150px; height: auto; border: 1px solid #ccc;">
+</div>
+
+  <button type="submit">{{ editMode ? 'Mettre à jour' : 'Ajouter' }}</button>
+  <button type="button" (click)="cancelEdit()" *ngIf="editMode">Annuler</button>
+</form>
+
+<hr />
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Prix</th>
+      <th>Description</th>
+      <th>Quantité</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.id }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.prix }}</td>
+      <td>{{ p.description }}</td>
+      <td>{{ p.qte }}</td>
+
+      <td>
+        <button (click)="editProduct(p)">Éditer</button>
+        <button (click)="deleteProduct(p.id)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

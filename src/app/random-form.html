@@ -1,0 +1,58 @@
+<h2 class="form-title">Formulaire Aléatoire</h2>
+<form [formGroup]="randomForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="favoriteColor">Couleur préférée</label>
+    <input id="favoriteColor" type="text" formControlName="favoriteColor" />
+    <div *ngIf="randomForm.get('favoriteColor')?.invalid && randomForm.get('favoriteColor')?.touched" class="error">
+      La couleur est requise.
+    </div>
+  </div>
+  <div>
+    <label for="luckyNumber">Numéro chanceux</label>
+    <input id="luckyNumber" type="text" formControlName="luckyNumber" />
+    <div *ngIf="randomForm.get('luckyNumber')?.errors?.['required'] && randomForm.get('luckyNumber')?.touched" class="error">
+      Un numéro valide est requis.
+    </div>
+    <div *ngIf="randomForm.get('luckyNumber')?.invalid && randomForm.get('luckyNumber')?.errors?.['min'] && randomForm.get('luckyNumber')?.touched" class="error">
+      Un numéro doit etre sup 300.
+    </div>
+  </div>
+  <div>
+    <label for="birthDate">Date de naissance</label>
+    <input id="birthDate" type="date" formControlName="birthDate" />
+    <div *ngIf="randomForm.get('birthDate')?.invalid && randomForm.get('birthDate')?.touched" class="error">
+      La date de naissance est requise.
+
+    </div>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div *ngIf="randomForm.get('email')?.invalid && randomForm.get('email')?.touched" class="error">
+      Un email valide est requis.
+    </div>
+  </div>
+  <div>
+    <label for="country">Pays</label>
+    <select id="country" formControlName="country">
+      <option value="">Sélectionnez un pays</option>
+      <option value="France">France</option>
+      <option value="Algeria">Algérie</option>
+      <option value="Morocco">Maroc</option>
+      <option value="Tunisia">Tunisie</option>
+      <option value="Other">Autre</option>
+    </select>
+    <div *ngIf="randomForm.get('country')?.invalid && randomForm.get('country')?.touched" class="error">
+      Le pays est requis.
+    </div>
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" formControlName="agree" /> J'accepte les conditions
+    </label>
+    <div *ngIf="randomForm.get('agree')?.invalid && randomForm.get('agree')?.touched" class="error">
+      Vous devez accepter.
+    </div>
+  </div>
+  <button type="submit" >Envoyer</button>
+</form>

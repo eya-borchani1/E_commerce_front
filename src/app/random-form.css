@@ -1,0 +1,60 @@
+.form-title {
+  text-align: center;
+  color: #388e3c;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px 32px;
+  background: #f6fff6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(34,139,34,0.08);
+}
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #207a3c;
+}
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #a5d6a7;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  background: #fafffa;
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #43a047;
+  outline: none;
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button[type="submit"]:hover:not(:disabled) {
+  background: #388e3c;
+}
+button[disabled] {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.error {
+  color: #d32f2f;
+  font-size: 13px;
+  margin-bottom: 8px;
+}

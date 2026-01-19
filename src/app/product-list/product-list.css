@@ -1,0 +1,70 @@
+/* Container for all cards */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Card style */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Product image */
+.product-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Text styling */
+.card-body {
+  padding: 15px;
+}
+
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 5px 0;
+  color: #333;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-qte {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
